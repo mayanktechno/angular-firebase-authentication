@@ -3,7 +3,18 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  url: 'http://ustandbynode.appskeeper.com:7341/v1/',
+  firebase:{
+    apiKey: "AIzaSyDe933njikuizfchc-aRTxC8GZn6nKjQ4c",
+    authDomain: "login-5bf16.firebaseapp.com",
+    databaseURL: "https://login-5bf16.firebaseio.com",
+    projectId: "login-5bf16",
+    storageBucket: "login-5bf16.appspot.com",
+    messagingSenderId: "836888352462",
+    appId: "1:836888352462:web:cce612bb7f599a307c629f",
+    measurementId: "G-8DYS8WWPKH"
+  }
 };
 
 /*

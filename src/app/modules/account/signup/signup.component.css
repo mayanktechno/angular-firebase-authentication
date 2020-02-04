@@ -1,0 +1,36 @@
+.bgimg {
+    position: absolute;
+    height: 100%; 
+    width: 800px; 
+    /* margin-top: 100px;
+    margin-right:70px; */
+    /* float:right; */
+    background-position: center;
+    right: 0;
+    /* position: relative; */
+    background-color: #c8cdd3;
+}
+
+.dimension{
+    width: 746px;
+    height: 720px;
+    float: right;
+}
+
+.fl{
+    margin: 100px;
+    float: left;
+}
+
+.m20{
+    margin-right:20px;
+    width: 265px;
+}
+.mt100{
+    margin-top: 100px;
+    color:#35393C;
+}
+
+.ff{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}

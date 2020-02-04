@@ -1,0 +1,130 @@
+.container {
+  position: relative;
+  text-align: center;
+  min-height: 600px;
+  background-image: url("../../../../assets/images/become1.png");
+  background-position: center center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+}
+.container::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.ml220 {
+  margin-left: 260px;
+}
+
+.w630 {
+  width: 660px;
+}
+.fc {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.mid-container {
+  width: 100%;
+  z-index: 1;
+  color: #fff;
+}
+.palceholder {
+  /* WebKit browsers */
+  color: #000000;
+  opacity: 1 !important;
+}
+
+.m1 {
+  margin-right: 25px;
+}
+
+.search-container {
+  display: inline-block;
+
+font-family: 'axiforma-semiBold,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif'
+}
+
+.eg {
+  margin-top: -10px;
+  margin-left: 45px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.wap-row {
+  margin-bottom: 50px;
+  display: flex;
+  margin-top: 30px;
+}
+
+.ml140{
+  margin-left:140px;
+}
+
+.contain{
+    float: left;
+    margin-left: 250px;
+    width: 300px;
+}
+
+.myhead{
+    font-size: 46px;
+    font-weight:700px;
+}
+
+.sendlink{
+    font-size: 18px;
+    font-weight: 400px;
+}
+
+.tac{
+    margin-top: 40px;
+    padding:15px;
+    margin-left: 50px;
+    font-size:28px;
+    font-weight: 600px;
+    text-align: center;
+    color: #000000;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-family: 'axiforma-regular,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif';
+}
+
+.container-wrap{
+  /* background-color:#C8CDD3; */
+  width: 615px;
+  text-align: center;
+  line-height: 25px;
+  font-size: 20px;
+     color: #000000;
+font-family: 'axiforma-regular,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif';
+}
+
+.flex-container{
+    display: flex;
+}
+
+.flex-container > p {
+    font-size: 17px;
+}
+
+.ml300{
+margin-left: 70px;
+}
+
+.wrap-new{
+   padding-top: 20px;
+    padding-bottom: 65px;
+    margin-top: 20px;
+    background-color: #F8F8F8;
+   
+    /* margin-bottom:20px; */
+}
+.bb{
+    margin-bottom: -37px;
+
+}

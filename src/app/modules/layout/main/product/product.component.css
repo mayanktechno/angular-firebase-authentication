@@ -1,0 +1,69 @@
+.container {
+  position: relative;
+  text-align: left;
+  min-height: 600px;
+  /* background-image: url("../../../../../assets/images/packerbg.jpeg"); */
+  background-position: center center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+}
+.container::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.fc {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  /* color: #000000; */
+}
+.mid-container {
+  width: 89%;
+  z-index: 1;
+  color: #fff;
+  position: absolute;
+    top: 0;
+    margin-top: 55px;
+    margin-left: 190px;
+}
+
+.fs{
+  font-weight: 450;
+  font-size: 20px;
+  margin-top: 30px;
+   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.m1 {
+  margin-right: 25px;
+}
+.right{
+      position: absolute;
+    right: 0;
+    top: 255px;
+    margin-right: 29px;
+    border-radius: 10px;
+    background-color: #dbc895;
+    padding-left: 70px;
+    padding-right: 70px;
+    padding-top: 15px;
+   padding-bottom :6px
+}
+
+.fc{
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.mt15{
+      margin-top: 15px;
+}
+
+.ml-200{
+  margin-left: 200px;
+}

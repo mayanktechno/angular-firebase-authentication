@@ -1,0 +1,22 @@
+<div class="search-container">
+<form>
+    <mat-form-field appearance="outline" class="m1">
+        
+        <mat-select placeholder=" Within City">
+            <mat-option *ngFor="let city of cities" [value]="city.name">
+                {{city.viewValue}}
+            </mat-option>
+        </mat-select>
+    `   </mat-form-field><br/>
+
+        <mat-form-field appearance="outline" class="m1">
+        <mat-select placeholder="Outside City">
+            <mat-option *ngFor="let city of cities" [value]="city.name">
+                {{city.viewValue}}
+            </mat-option>
+        </mat-select>
+
+    </mat-form-field>
+</form>
+
+</div>

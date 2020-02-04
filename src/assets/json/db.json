@@ -1,0 +1,133 @@
+{
+  "Shifting Home": [  
+      { "id":1,
+        "url": "./assets/images/shift1.jpeg",
+        "name": "shifthome1",
+        "rout": "/shifthome/home1",
+        "title": "Best Packers & Movers",
+        "bgImg":"./assets/images/packerbg.jpeg",
+        "detail":[
+          "Superior packaging at best rates",
+          "Free insurance up to Rs.10,000",
+          "Trained & verified Packers & Movers"
+        ]
+    },
+      { "id": 2,
+        "url": "./assets/images/shift2.jpeg",
+        "name": "shifthome2",
+        "rout" : "/shifthome/home2",
+        "title": "Carpenters At Door",
+        "bgImg":"./assets/images/carpenter.jpeg",
+      "detail":[
+        "Doorstep repair within 90 mins",
+        "Protection Against Damage Upto INR 10,000",
+        "30 day post-service guarantee"  
+      ]},
+      { "id": 3,
+        "url": "./assets/images/shift3.jpeg", 
+        "name": "shifthome3",
+        "rout" : "/shifthome/home3",
+      "title": "AC Repair & Services",
+        "bgImg": "./assets/images/acrepair.jpg",
+        "detail":[
+          "Upto Rs 10,000 damage insurance",
+          "30 day service guarantee",
+          "Background checked and trained technicians with genuine parts & fixed pricing"
+        ]},
+      { "id": 4,
+        "url": "./assets/images/shift4.jpeg", 
+        "name": "shifthome4",
+        "rout" : "/shifthome/home4",
+        "title": "Pest Controls",
+        "bgImg": "./assets/images/pest.jpg",
+      "detail":[
+        "Treatment with Internationally certified Pest Control chemicals",
+        "Pest removal assured, 30 Days Service Warranty",
+        "Highly trained & Background verified technicians"
+      ]}
+  ],
+    "Health & Wellness":[
+         {
+           "id":5,
+           "url": "./assets/images/health1.jpeg",
+           "name": "health1",
+           "rout": "/healthwellness/health1",
+           "title":"Yoga Trainer At Home",
+           "bgImg": "./assets/images/health11.jpg",
+           "detail":[
+             "Train with a certified trainer",
+             "Get 12 sessions in 4 weeks",
+             "Get fit at comfort of your home"
+           ]
+         },
+         {
+           "id":6,
+           "url": "./assets/images/health2.jpeg",
+           "name": "health2",
+           "rout": "/healthwellness/health2",
+           "title":"Fitness Trainer At Home",
+           "bgImg": "./assets/images/health12.jpg",
+           "detail":[
+             "Get 12 sessions in 4 weeks",
+             "Train with a certified trainer",
+             "Customized workout plans"
+        ]
+         },
+        {
+          "id":7,
+           "url": "./assets/images/health3.jpeg",
+           "name": "health3",
+           "rout": "/healthwellness/health3",
+           "title":"Dietician At Door",
+           "bgImg": "./assets/images/Nutritionist_Desktop.jpg",
+           "detail":[
+             "Book a free Consultation",
+             "Get Online/ Offline Consultation",
+             "Get Certified Nutritionists with 5+ years of experience"
+           ]
+         },
+         {
+           "id":8,
+           "url": "./assets/images/health4.jpeg",
+           "name": "health4",
+           "rout": "/healthwellness/health4",
+           "title":"Salon at Home for Women",
+           "bgImg": "./assets/images/health14.jpeg",
+           "detail":[
+             "Branded Cosmetics are used- Loreal, Cheryl's and O3+",
+             "Hygiene Friendly : Disposables items like wipes, towels are used",
+             "Beauticians with minimum 5 years of experience"
+           ]
+         }
+    ],
+    "Massage At Home":[
+      {
+        "id":9,
+        "url": "./assets/images/massage1.jpeg",
+        "name": "massage1",
+        "rout": "/massage/men",
+        "title": "Massage for Men"
+      },
+      {
+        "id":10,
+        "url": "./assets/images/massage2.jpeg",
+        "name": "massage2",
+        "rout": "/massage/women",
+        "title": "Massage for Women"
+      },
+      {
+        "id":11,
+        "url": "./assets/images/massage3.jpeg",
+        "name": "massage3",
+        "rout": "/massage/grooming",
+        "title": "Men's Haircut & Grooming"
+      },
+      {
+        "id":12,
+        "url": "./assets/images/rec1.jpeg",
+        "name": "massage1",
+        "rout": "/massage/makeup",
+        "title": "Makeup Artist At Door"
+      }
+    ]
+}

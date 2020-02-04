@@ -1,0 +1,28 @@
+.container{
+    padding: 20px;
+    display:flexbox;
+    width: 97.8%;   
+    background-color: #c7ccd245 
+}
+
+.image-container{
+    width:100px;
+    height:100px;
+}
+
+.ml{
+    margin-left: 22%;
+    cursor: pointer;
+}
+
+.ml5{
+    margin-left: 4%;
+    cursor: pointer;
+}
+
+.ml20{
+        margin-left: 21.9%;
+    margin-top: 5px;
+
+}
+

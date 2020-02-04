@@ -1,0 +1,24 @@
+<div class="page-wrapper">
+    <div class="nav-wrapper">
+        <div class="grad-bar"></div>
+        <nav class="navbar">
+            <img src="./assets/images/amigo.png" (click)="mainPageRouting()" style="width: 100px; height: 60px;cursor: pointer;"
+                alt="Company Logo">
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav no-search">
+                <li class="nav-item" (click)="navigateAbout()"><a>About Us</a></li>
+                <li class="nav-item"><a href="#">Blog</a></li>
+                <li class="nav-item" (click)='navigateBecome()'><a>Become A Professional</a></li>
+                <li class="nav-item" *ngIf="token" [ngStyle]="{display:(isEnable)? 'none' : 'block'}"  (click)="logout()"><a href="#">Logout</a></li>
+                <li class="nav-item" *ngIf=!token (click)="navigateLogin()"><a>Login/Signup</a></li>
+                
+            </ul>
+        </nav>
+    </div>
+   
+</div>
+

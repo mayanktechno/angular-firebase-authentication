@@ -1,0 +1,9 @@
+.search-container {
+  display: inline-block;
+  z-index: 1;
+}
+
+.m1{
+    /* background-color: #fff; */
+    width: 280px;
+}

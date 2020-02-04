@@ -1,0 +1,42 @@
+<app-header></app-header>
+
+<router-outlet></router-outlet>
+<div>
+<div class="container">
+        <div class="mid-container">
+            <h1 class="fc">Your Service Expert In Delhi</h1>
+            <h2 class="fc">Get instant access to reliable and affordable services</h2>
+        
+        <div class="search-container">
+        <form class="myform">
+            <mat-form-field appearance="outline" class="m1">
+                <mat-select placeholder="Cities..">
+                    <mat-option *ngFor="let city of cities" [value]="city.name">
+                        {{city.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+     
+      
+            <mat-form-field style="opacity: 1 !important"  appearance="outline" class="w630">
+                <input matInput placeholder="Search Here for Service ...">
+            </mat-form-field>
+        <h4 class="eg">Eg : Salon At Home , Plumber , Refrigerator Repair , Electrician </h4>
+        </form>
+        </div>  
+    </div>
+</div>
+
+<app-homegrid></app-homegrid>
+
+
+<div *ngFor="let img of imgData | keyvalue">
+    <h2 class="ml140">{{img.key}}</h2>
+<div class="wap-row">
+    <ng-container *ngFor = "let data of img.value ">
+    <app-gridimage  (click)="product(data.id)" class="img-container" [imageData]="data.url"  [heading]="data.title"></app-gridimage>
+    </ng-container>
+</div>
+</div>
+</div>
+<app-footer></app-footer> 

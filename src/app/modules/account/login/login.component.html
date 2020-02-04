@@ -1,0 +1,70 @@
+
+<div class="wrapper">
+    <div class="left-wrapper">
+        <div>
+        <img class="dimension" src="./assets/images/group1.png">
+        </div>
+        <div class="bgimg">
+          <div class="fl" (click)="navigateMain()">
+            <p>Visit to Website</p>
+          </div>
+              
+            <mat-card class="bgpop">
+                
+                <mat-card-header class="ml-40">
+                    <mat-card-title class="hello"><h1>Hello Amigo !!</h1></mat-card-title>
+                    <mat-card-subtitle>Login to your Thunder Account to get back your codes.<br/>
+                    Or new user <span class="signuplink" (click)="signNavigating()">signup</span></mat-card-subtitle>
+                </mat-card-header>
+            
+                <mat-card-content class="ml-40">
+                    <form [formGroup]="loginForm" (ngSubmit)="loginForm.valid && login()">
+
+                <mat-form-field class="w-390" appearance="outline">
+                    <input appWhiteSpace matInput placeholder="E-mail" formControlName="email">
+                    <mat-error *ngIf="getControl('email').hasError('required')">{{LOGIN_ERROR.email_required}}</mat-error>
+                    <mat-error *ngIf="getControl('email').hasError('pattern')">{{LOGIN_ERROR.email_pattern}}</mat-error>
+                </mat-form-field>
+
+                  <mat-form-field class="w-390" appearance="outline">
+                    <input appWhiteSpace matInput required placeholder="Password" formControlName="password"
+                     [type]="hide ? 'password' :'text'">
+                    <mat-icon matSuffix (click)="hide= !hide">
+                      {{hide ? 'visibility_off' :'visibility'}}
+                    </mat-icon>
+                    <mat-error *ngIf="getControl('password').hasError('required')">{{LOGIN_ERROR.password_required}}</mat-error>
+                    <mat-error *ngIf="getControl('password').hasError('pattern')">{{LOGIN_ERROR.password_pattern}}</mat-error>
+                    <mat-error *ngIf="getControl('password').hasError('minlength')">{{LOGIN_ERROR.password_minlength}}</mat-error>
+                    <mat-error *ngIf="getControl('password').hasError('maxlength')">{{LOGIN_ERROR.password_maxlength}}</mat-error>
+                  </mat-form-field>
+
+                  <mat-card-actions>
+
+                        <button mat-raised-button type="submit" style="margin-left: 10px" class="mat-raised-button mat-primary mat-submit">SIGN IN</button>
+                        <button mat-button type="button" style="margin-left: 170px;"  (click)="forgotNavigate()">Forgot Password</button>
+                       
+                  </mat-card-actions>
+                  <!-- <mat-card-actions>
+                <button mat-stroked-button style="margin-left: 120px;" (click)="googleSignIn()" color="primary">Sign in with Google</button>
+                <button mat-stroked-button style="margin-left: 113px;" (click)="facebookSignIn()" color="primary">Sign in with Facebook</button>
+                </mat-card-actions> -->
+                      <mat-card-actions>
+                      
+                        <button mat-raised-button style="margin-left: 10px"
+                        (click)="googleSignIn()"  class="mat-raised-button mat-primary mat-submit">Sign in with Google</button>
+                        <button mat-button type="button" class="mat-raised-button mat-primary mat-submit" style="margin-left: 70px;" (click)="facebookSignIn()" color="primary">Sign in with Facebook</button>
+                      
+                      </mat-card-actions>
+
+                </form>
+              <div *ngIf="myerr">
+                <p id="msgerr">{{erro}}</p>
+              </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>
+
+
+
