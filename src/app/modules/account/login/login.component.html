@@ -50,9 +50,16 @@
                 </mat-card-actions> -->
                       <mat-card-actions>
                       
-                        <button mat-raised-button style="margin-left: 10px"
-                        (click)="googleSignIn()"  class="mat-raised-button mat-primary mat-submit">Sign in with Google</button>
-                        <button mat-button type="button" class="mat-raised-button mat-primary mat-submit" style="margin-left: 70px;" (click)="facebookSignIn()" color="primary">Sign in with Facebook</button>
+                        <button mat-raised-button  style="margin-left: 10px"
+                        (click)="googleSignIn()"
+                         matTooltip="Sign In Using Google">
+                     
+                        <img src="./assets/images/google.png" width="40px">
+                      </button>
+                        <button mat-button type="button" style="margin-left: 230px;" (click)="facebookSignIn()"
+                         matTooltip="Sign In Using Facebook">
+                        <img src="./assets/images/facebook.png" width="40px">
+                        </button>
                       
                       </mat-card-actions>
 

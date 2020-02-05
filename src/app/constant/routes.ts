@@ -21,4 +21,6 @@ export const GROOMING = 'grooming';
 export const MAKEUP ='makeup';
 
 export const ABOUT ='about';
-export const BECOME_PROFESSIONAL = 'become-professional'
+export const BECOME_PROFESSIONAL = 'become-professional';
+export const PROFILE = 'profile';
+export const USER_PROFILE = 'user-profile';

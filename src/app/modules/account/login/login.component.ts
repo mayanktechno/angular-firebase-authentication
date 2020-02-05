@@ -11,6 +11,9 @@ import { LoaderService } from '../../layout/shared/service/loader.service';
 import { trimData } from 'src/app/constant/reusable-method';
 import { GoogleAuthService } from '../../layout/shared/service/google-auth.service';
 import { auth } from 'firebase';
+import { DataPassService } from '../../layout/shared/service/data-pass.service';
+import { FirestoreService } from '../../layout/shared/service/firestore.service';
+
 
 @Component({
   selector: 'app-login',
@@ -28,8 +31,10 @@ export class LoginComponent implements OnInit {
     private _loginService: LoginService,
     private _toasterService: ToastService,
     private _loaderService: LoaderService,
+    private _dataPassService : DataPassService,
     private _socialLogin: GoogleAuthService,
-    private ngZone: NgZone) { }
+    private ngZone: NgZone,
+    private _authStoreService : FirestoreService) { }
 
   ngOnInit() {
     this.createLoginForm();
@@ -101,12 +106,33 @@ export class LoginComponent implements OnInit {
 
   googleSignIn() {
     this.loginForm.disable();
-    const one = new auth.GoogleAuthProvider()
+    const one = new auth.GoogleAuthProvider();
+
     this._socialLogin.AuthLogin(one).then(result => {
-        console.log(result);
+      console.log(result);
+
+      this._authStoreService.existEmail(result).subscribe(res => {
+        console.log(res,'email exist ... !!');
+        if (res.length > 0) {
+         return
+        }
+        else {
+          this._authStoreService.createUser(result).then(res=>{
+            console.log(res)
+          },(err=>{
+            console.log(err);
+          }));
+          console.log("Does not exist.");
+        }
+      });
+
+      this._loaderService.loader.next(false);
+      // this._dataPassService.dataPass.next(result.additionalUserInfo.profile); 
+  
       localStorage.setItem('social-auth', result.credential['accessToken']);
       // previous component is not destroying error .. solved By this ngZoneRun
       this.ngZone.run(() => this.router.navigate(['']));
+      // this.router.navigate(['']);
 
     }).catch(err => {
       //error show
@@ -149,6 +175,16 @@ export class LoginComponent implements OnInit {
     })
 
   }
+
+  // createUser(value, avatar) {
+  //   return this.db.collection('users').add({
+  //     name: value.name,
+  //     nameToSearch: value.name.toLowerCase(),
+  //     surname: value.surname,
+  //     age: parseInt(value.age),
+  //     avatar: avatar
+  //   });
+  // }
 
 
   ngOnDestroy() {

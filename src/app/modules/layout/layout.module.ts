@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LayoutComponent } from './layout.component';
 import { Routes, RouterModule } from '@angular/router';
-import { ABOUT, BECOME_PROFESSIONAL } from 'src/app/constant/routes';
+import { ABOUT, BECOME_PROFESSIONAL , USER_PROFILE } from 'src/app/constant/routes';
 
 
 const layoutRoutes: Routes = [
@@ -17,7 +17,11 @@ const layoutRoutes: Routes = [
   },
   {
     path: BECOME_PROFESSIONAL, loadChildren: () => import('../layout/become-professional/become-professional.module').then(mod => mod.BecomeProfessionalModule)
+  },
+  {
+    path: USER_PROFILE, loadChildren: () => import('../layout/user/user.module').then(mod => mod.UserModule)
   }
+
 ]
 
 @NgModule({

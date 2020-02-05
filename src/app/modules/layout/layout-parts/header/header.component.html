@@ -11,11 +11,10 @@
             </div>
             <ul class="nav no-search">
                 <li class="nav-item" (click)="navigateAbout()"><a>About Us</a></li>
-                <li class="nav-item"><a href="#">Blog</a></li>
                 <li class="nav-item" (click)='navigateBecome()'><a>Become A Professional</a></li>
+                <li class="nav-item" (click)="navigateProfile()" *ngIf="token" [ngStyle]="{display:(isEnable)? 'none' : 'block'}"><a>Profile</a></li>
                 <li class="nav-item" *ngIf="token" [ngStyle]="{display:(isEnable)? 'none' : 'block'}"  (click)="logout()"><a href="#">Logout</a></li>
                 <li class="nav-item" *ngIf=!token (click)="navigateLogin()"><a>Login/Signup</a></li>
-                
             </ul>
         </nav>
     </div>

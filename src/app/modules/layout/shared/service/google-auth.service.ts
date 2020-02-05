@@ -2,6 +2,7 @@ import { Injectable, ChangeDetectorRef } from '@angular/core';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { auth } from 'firebase';
 import { Router } from '@angular/router';
+import { LoaderService } from './loader.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,8 @@ import { Router } from '@angular/router';
 export class GoogleAuthService {
 
   constructor(private authG: AngularFireAuth,
-    private _router: Router) { }
+    private _router: Router,
+    private _loaderService :LoaderService) { }
 
   // Sign in with Google
   // GoogleAuth() {
@@ -17,8 +19,10 @@ export class GoogleAuthService {
   // }
 
   // Auth logic to run auth providers
-  AuthLogin(provider) {
-    return this.authG.auth.signInWithPopup(provider);
+  AuthLogin(provider,loader = true) {
+    if(loader){
+      return this.authG.auth.signInWithPopup(provider);
+    }
   }
 
 }

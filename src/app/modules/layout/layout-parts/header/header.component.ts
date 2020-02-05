@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { LOGIN, ACCOUNT, BECOME_PROFESSIONAL, ABOUT } from '../../../../../app/constant/routes';
+import { LOGIN, ACCOUNT, BECOME_PROFESSIONAL, ABOUT, USER_PROFILE } from '../../../../../app/constant/routes';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.prod';
 
@@ -12,7 +12,6 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class HeaderComponent implements OnInit {
 isEnable = false;
-  // @ViewChild('out', { static: false }) outRef: ElementRef;
   token;
   body = {
     device_id :"1234",
@@ -31,6 +30,10 @@ isEnable = false;
   }
   navigateLogin(){
     this.router.navigate([`${ACCOUNT}/${LOGIN}`]);
+  }
+
+  navigateProfile(){
+    this.router.navigate([`${USER_PROFILE}`]);
   }
   
   logout(){
