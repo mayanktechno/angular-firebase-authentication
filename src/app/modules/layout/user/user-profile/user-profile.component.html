@@ -1,16 +1,12 @@
 <app-header></app-header>
 <div class="container">
-    <div class="avatar-flip">
-        <img src="userProfileData.picture"
-            height="150" width="150">
-        <img src="http://i1112.photobucket.com/albums/k497/animalsbeingdicks/abd-3-12-2015.gif~original" height="150"
-            width="150">
+    <div class="profile">
+        <img src="./assets/images/profile.png" height="150" width="150">
     </div>
-    <!-- <h2 class="name">{{userProfileData.name}}</h2>
-    <h4 class="name">Email : {{userProfileData.email}}</h4> -->
-    <p class="name">Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Maecenas sed diam eget risus varius blandit sit
-        amet non magna ip sum dolore.</p>
-    <p class="name">Connec dolore ipsum faucibus mollis interdum. Donec ullamcorper nulla non metus auctor fringilla.</p>
+    <h1 class="name" *ngIf="userProfileData?.first_name">{{userProfileData?.first_name |titlecase}} {{userProfileData?.middle_name |titlecase}} {{userProfileData?.last_name |titlecase}}</h1>
+    <h2 class="name" *ngIf="userProfileData?.email">Email : {{userProfileData?.email}}</h2>
+    <h2 class="name" *ngIf="userProfileData?.address">Address : {{userProfileData?.address |titlecase}}</h2>
+    <h2 class="name" *ngIf="userProfileData?.phone_no">Phone No : {{ userProfileData?.phone_code }} {{userProfileData?.phone_no}}</h2>
 </div>
 
 <app-footer></app-footer>

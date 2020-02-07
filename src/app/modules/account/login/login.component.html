@@ -50,13 +50,13 @@
                 </mat-card-actions> -->
                       <mat-card-actions>
                       
-                        <button mat-raised-button  style="margin-left: 10px"
+                        <button mat-raised-button id="google"  style="margin-left: 10px"
                         (click)="googleSignIn()"
-                         matTooltip="Sign In Using Google">
+                         matTooltip="Sign In Using Google" #google>
                      
                         <img src="./assets/images/google.png" width="40px">
                       </button>
-                        <button mat-button type="button" style="margin-left: 230px;" (click)="facebookSignIn()"
+                        <button mat-button type="button" id="facebook" style="margin-left: 230px;" (click)="facebookSignIn()"
                          matTooltip="Sign In Using Facebook">
                         <img src="./assets/images/facebook.png" width="40px">
                         </button>

@@ -9,6 +9,8 @@ import { ACCOUNT, LOGIN } from 'src/app/constant/routes';
 import { ToastService } from '../../layout/toast/toast.service';
 import { LoaderService } from '../../layout/shared/service/loader.service';
 import { trimData } from 'src/app/constant/reusable-method';
+import { GoogleAuthService } from '../../layout/shared/service/google-auth.service';
+import { FirestoreService } from '../../layout/shared/service/firestore.service';
 
 @Component({
   selector: 'app-signup',
@@ -27,7 +29,9 @@ export class SignupComponent implements OnInit {
               private _signUpService : SignupService,
               private _router : Router,
               private _loaderService :LoaderService,
-              private _toasterService: ToastService) { }
+              private _toasterService: ToastService,
+              private _afs :GoogleAuthService,
+              private _authStoreService: FirestoreService) { }
     
   ngOnInit() {
   this.createSignupForm();
@@ -77,39 +81,69 @@ export class SignupComponent implements OnInit {
       // }
       if(this.signupForm.value.password !== this.signupForm.value.confirm_password){
         this.erro = "password & confirm password not match";
-        setTimeout(function () {
-          document.getElementById('msgerr').innerHTML = ''
-        }, 3000)
+        this._toasterService.success(this.erro, 5000);
+        // setTimeout(function () {
+        //   document.getElementById('msgerr').innerHTML = ''
+        // }, 3000)
         
       }
       else{
         this.myerr = false
         delete this.signupForm.value.confirm_password;
         console.log(this.signupForm.value);
-        this._signUpService.registerUser(this.signupForm.value).subscribe(res=>{
+
+        // this._authStoreService.createNormalUser(this.signupForm.value).then(res=>{
+        //   console.log(res);
+        // },(err=>{
+        //   console.log(err);
+        // }))
+
+        this._afs.AuthSignUp(this.signupForm.value).then(res=>{
           this._loaderService.loader.next(false);
-        console.log(res);    
-        this._toasterService.success('signUp success', 3000);
-        this._router.navigate([`${ACCOUNT}/${LOGIN}`])
-      },(err => {
-        console.log(err);
-            this.myerr = true;
-
-        this._loaderService.loader.next(false);
-        this.signupForm.enable();
-        this.erro = err.error.message;
+          console.log(res);
+          this._router.navigate([`${ACCOUNT}/${LOGIN}`])
+        },(err=>{
+            this._loaderService.loader.next(false);
+          console.log(err);
+            this.signupForm.enable();
+        this.erro = err.message;
         console.log(this.erro,'fsdffefefeerrer');
-        setTimeout(function () {
-          document.getElementById('msgerr').innerHTML = '';
-        }, 3000);
+        this._toasterService.success(err.message,5000);
+        this.signupForm.controls.email.setValue('');
+        this.signupForm.controls.email.setErrors({ 'incorrect': true });
+        }))
 
-            this.signupForm.controls.email.setValue('');
-            this.signupForm.controls.email.setErrors({ 'incorrect': true });
-        // this._toasterService.success(err.error.message, 10000);
-      }))
+
+
+
+
+
+
+
+      //   this._signUpService.registerUser(this.signupForm.value).subscribe(res=>{
+      //     this._loaderService.loader.next(false);
+      //   console.log(res);    
+      //   this._toasterService.success('signUp success', 3000);
+      //   this._router.navigate([`${ACCOUNT}/${LOGIN}`])
+      // },(err => {
+      //   console.log(err);
+      //       this.myerr = true;
+
+      //   this._loaderService.loader.next(false);
+      //   this.signupForm.enable();
+      //   this.erro = err.error.message;
+      //   console.log(this.erro,'fsdffefefeerrer');
+      //   setTimeout(function () {
+      //     document.getElementById('msgerr').innerHTML = '';
+      //   }, 3000);
+
+      //       this.signupForm.controls.email.setValue('');
+      //       this.signupForm.controls.email.setErrors({ 'incorrect': true });
+      //   // this._toasterService.success(err.error.message, 10000);
+      // }))
     }
     }
-    // this.signupForm.enable();
+    this.signupForm.enable();
 
     
   }

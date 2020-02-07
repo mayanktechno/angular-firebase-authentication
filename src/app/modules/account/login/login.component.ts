@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PATTERN } from 'src/app/constant/pattern';
 import { VALIDATION_CRITERIA } from '../../../constant/validation-criteria';
@@ -21,11 +21,13 @@ import { FirestoreService } from '../../layout/shared/service/firestore.service'
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  @ViewChild('google', { static: false }) googlebtn: ElementRef;
   LOGIN_ERROR = VALIDATION_ERROR_MSG
   hide = true;
   loginForm: FormGroup
   erro: string;
   myerr: boolean;
+  clicked: boolean;
   constructor(private _fb: FormBuilder,
     private router: Router,
     private _loginService: LoginService,
@@ -65,30 +67,48 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.loginForm.disable();
       trimData(this.loginForm.value);
-      this._loginService.login(this.loginForm.value).subscribe(res => {
-
+    
+      this._socialLogin.emailPasswordLogin(this.loginForm.value.email,this.loginForm.value.password).then(res=>{
         console.log(res);
-        this.loginForm.disabled;
-        localStorage.setItem('authorisation', res['data'].access_token);
+        localStorage.setItem('authorisation', res['user']['_lat']);
+        localStorage.setItem('uid',res.user.uid);
         this.router.navigate(['']);
         this._loaderService.loader.next(false);
-        // this._toasterService.success('Login Success', 3000);
-      }, (err => {
-        this.myerr = true;
+        this._toasterService.success('Login Success', 2000);
+      },(err=>{
         console.log(err);
-        this.erro = err.error.message;
-        console.log(this.erro, 'fsdffefefeerrer');
-        setTimeout(function () {
-          document.getElementById('msgerr').innerHTML = '';
-        }, 3000);
-
-        this.loginForm.enable();
-
+        
+        this._loaderService.loader.next(false);
+        this._toasterService.success(err.message, 3000);
         this.loginForm.controls.email.setValue('');
         this.loginForm.controls['email'].setErrors({ 'incorrect': true });
-        this._loaderService.loader.next(false);
-        // this._toasterService.success(err.error.message, 10000);
+        this.loginForm.enable();
       }))
+
+      // this._loginService.login(this.loginForm.value).subscribe(res => {
+
+      //   console.log(res);
+      //   this.loginForm.disabled;
+      //   localStorage.setItem('authorisation', res['data'].access_token);
+      //   this.router.navigate(['']);
+      //   this._loaderService.loader.next(false);
+      //   // this._toasterService.success('Login Success', 3000);
+      // }, (err => {
+      //   this.myerr = true;
+      //   console.log(err);
+      //   this.erro = err.error.message;
+      //   console.log(this.erro, 'fsdffefefeerrer');
+      //   setTimeout(function () {
+      //     document.getElementById('msgerr').innerHTML = '';
+      //   }, 3000);
+
+      //   this.loginForm.enable();
+
+      //   this.loginForm.controls.email.setValue('');
+      //   this.loginForm.controls['email'].setErrors({ 'incorrect': true });
+      //   this._loaderService.loader.next(false);
+      //   // this._toasterService.success(err.error.message, 10000);
+      // }))
     }
   }
 
@@ -105,31 +125,33 @@ export class LoginComponent implements OnInit {
   }
 
   googleSignIn() {
-    this.loginForm.disable();
+    document.getElementById('google')['disabled'] = true;
     const one = new auth.GoogleAuthProvider();
+   
+    this._socialLogin.AuthLogin(one)
+    .then(result => {
+      console.log(result, "google login");
 
-    this._socialLogin.AuthLogin(one).then(result => {
-      console.log(result);
-
-      this._authStoreService.existEmail(result).subscribe(res => {
-        console.log(res,'email exist ... !!');
-        if (res.length > 0) {
-         return
-        }
-        else {
-          this._authStoreService.createUser(result).then(res=>{
-            console.log(res)
-          },(err=>{
-            console.log(err);
-          }));
-          console.log("Does not exist.");
-        }
-      });
+      // this._authStoreService.existEmail(result).subscribe(res => {
+      //   console.log(res,'email exist ... !!');
+      //   if (res.length > 0) {
+      //    return
+      //   }
+      //   else {
+      //     this._authStoreService.createUser(result).then(res=>{
+      //       console.log(res)
+      //     },(err=>{
+      //       console.log(err);
+      //     }));
+      //     console.log("Does not exist.");
+      //   }
+      // });
 
       this._loaderService.loader.next(false);
       // this._dataPassService.dataPass.next(result.additionalUserInfo.profile); 
   
-      localStorage.setItem('social-auth', result.credential['accessToken']);
+      localStorage.setItem('social-auth', result['credential']['accessToken']);
+      localStorage.setItem('uid',result['user']['uid'])
       // previous component is not destroying error .. solved By this ngZoneRun
       this.ngZone.run(() => this.router.navigate(['']));
       // this.router.navigate(['']);
@@ -148,15 +170,18 @@ export class LoginComponent implements OnInit {
       // console.log(err);
     })
 
+
   }
 
   facebookSignIn() {
+    document.getElementById('facebook')['disabled'] = true;
     this.myerr = false
     this.loginForm.disable();
     const one =  new auth.FacebookAuthProvider();
     this._socialLogin.AuthLogin(one).then(result => {
-      console.log(result);
-      localStorage.setItem('social-auth', result.credential['accessToken']);
+      console.log(result , "facebook login");
+      localStorage.setItem('social-auth', result['credential']['accessToken']);
+      localStorage.setItem('uid', result['user']['uid']);
       // previous component is not destroying error .. solved By this ngZoneRun
       this.ngZone.run(() => this.router.navigate(['']));
 
